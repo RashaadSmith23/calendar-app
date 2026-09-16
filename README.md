@@ -1,9 +1,7 @@
-# 📅 FlowCal – Smart Calendar with Auto‑Save
+<img width="1348" height="645" alt="image" src="https://github.com/user-attachments/assets/26bdbd7c-bbbf-4655-8f98-3ff114c928d1" /># 📅 FlowCal – Smart Calendar with Auto‑Save
 
 A beautiful, responsive, and feature‑rich calendar app built with **vanilla JavaScript**, **HTML5**, and **CSS3**.  
 FlowCal helps you manage events with auto‑save to your browser, dark mode, mobile‑friendly bottom sheet, and intuitive navigation.
-
-![FlowCal Preview](https://via.placeholder.com/1200x600/4f46e5/ffffff?text=FlowCal+Calendar+Preview)
 
 ---
 
