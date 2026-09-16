@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#4f46e5">
+  <title>FlowCal – Smart Calendar with Auto-Save</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app" id="calendarApp">
+
+    <!-- ============ HEADER ============ -->
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-icon">📅</span>
+        <div class="brand-text">
+          <h1>FlowCal</h1>
+          <p>smart event tracker</p>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="today-chip">
+          <span class="pulse-dot"></span>
+          <span id="liveDateText">—</span>
+        </div>
+        <button class="icon-btn" id="themeToggle" type="button"
+                aria-label="Toggle dark mode" title="Toggle theme">🌙</button>
+        <span class="save-chip" id="saveStatus">💾 Saved</span>
+      </div>
+    </header>
+
+    <!-- ============ BODY ============ -->
+    <div class="app-body">
+
+      <!-- ---- Calendar ---- -->
+      <main class="calendar-main" id="calendarMain">
+        <div class="calendar-nav">
+          <div class="month-year">
+            <h2 id="monthYearDisplay">June 2025</h2>
+            <button class="link-btn" id="todayBtn" type="button">Jump To Today's Date</button>
+          </div>
+          <div class="nav-buttons">
+            <button class="icon-btn" id="prevMonthBtn" type="button" aria-label="Previous month">‹</button>
+            <button class="icon-btn" id="nextMonthBtn" type="button" aria-label="Next month">›</button>
+          </div>
+        </div>
+
+        <div class="weekdays" id="weekdays"></div>
+        <div class="days-grid" id="daysGrid"></div>
+
+        <p class="swipe-hint">← Swipe to change month →</p>
+      </main>
+
+      <!-- ---- Sidebar / Bottom sheet ---- -->
+      <aside class="sidebar" id="sidebar" aria-label="Event manager">
+        <div class="sheet-handle" aria-hidden="true"></div>
+
+        <div class="sidebar-inner">
+
+          <div class="sidebar-head">
+            <div>
+              <p class="eyebrow">Selected day</p>
+              <h3 id="selectedDayTitle">—</h3>
+            </div>
+            <button class="icon-btn only-mobile" id="closeSidebar" type="button"
+                    aria-label="Close panel">✕</button>
+          </div>
+
+          <div class="event-list" id="eventListContainer"></div>
+
+          <form class="event-form" id="eventForm" autocomplete="off">
+            <h4 class="form-title">✍️ Manage events</h4>
+
+            <div class="form-group">
+              <label for="eventTitleInput">Title</label>
+              <input id="eventTitleInput" type="text" maxlength="60"
+                     placeholder="e.g. Team meeting" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="eventDateInput">Date</label>
+                <input id="eventDateInput" type="date" required>
+              </div>
+              <div class="form-group">
+                <label for="eventTimeInput">Time <span class="opt">optional</span></label>
+                <input id="eventTimeInput" type="time">
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="primary-btn" type="submit" id="addEventBtn">
+                ➕ Add event
+              </button>
+              <button class="danger-btn" type="button" id="removeEventBtn"
+                      title="Removes the matching event (or the last one if title is empty)">
+                🗑 Remove event
+              </button>
+            </div>
+
+            <p class="form-hint">
+              Tip: Fill in the title to remove a specific event — or leave it
+              blank to remove the last one on the selected day.
+            </p>
+          </form>
+
+        </div>
+      </aside>
+
+    </div>
+
+    <footer class="app-footer">
+      ✅ Everything is auto-saved in your browser — refresh‑proof.
+    </footer>
+  </div>
+
+  <!-- ============ MOBILE HELPERS ============ -->
+  <div class="backdrop" id="backdrop"></div>
+  <button class="fab" id="fabAdd" type="button" aria-label="Add event">＋</button>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" data-type="success">
+    <span id="toastMsg"></span>
+    <button id="toastAction" type="button" hidden></button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
